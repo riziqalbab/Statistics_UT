@@ -1,0 +1,185 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{icomma}
+\usepackage{needspace}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\setlist{itemsep=2pt,topsep=2pt}
+\titleformat{\section}{\large\bfseries}{}{0pt}{}
+\newcommand{\soal}[1]{\par\Needspace{6\baselineskip}\medskip\textbf{#1}\par}
+\newcommand{\chisq}{\chi^2}
+
+\title{\textbf{Tugas 2}\\[4pt]\large Uji Kesesuaian Distribusi Multinomial dan Poisson}
+\author{
+ Riziq Lili Ulil Albab \\ 
+ 058487469 \\
+}
+
+
+\begin{document}
+\maketitle
+\vspace{-2.5em}
+
+%=====================================================
+\section{Kasus 1: Uji Kesesuaian Distribusi Multinomial}
+
+\soal{1. Alasan menggunakan uji multinomial}
+Data berupa frekuensi pada lebih dari dua kategori yang saling lepas (membaca BMP, menonton video, mengerjakan latihan soal). Setiap mahasiswa hanya memilih satu kategori. Tutor ingin membandingkan sebaran observasi dengan proporsi teoretis tertentu ($\tfrac13 : \tfrac13 : \tfrac13$). Ini adalah situasi uji kesesuaian (\emph{goodness of fit}) untuk distribusi multinomial.
+
+\soal{2. Hipotesis}
+\begin{itemize}
+  \item $H_0: p_1 = p_2 = p_3 = \tfrac13$ \quad (pilihan metode belajar tersebar merata)
+  \item $H_1:$ paling sedikit satu $p_i \neq \tfrac13$ \quad (pilihan metode belajar tidak tersebar merata)
+\end{itemize}
+
+\soal{3. Frekuensi harapan}
+\[
+E_i = n \cdot p_i = 60 \cdot \tfrac13 = 20 \quad \text{untuk setiap kategori.}
+\]
+
+\soal{4. Statistik uji chi-kuadrat}
+\[
+\chisq = \sum_{i=1}^{k} \frac{(O_i - E_i)^2}{E_i}
+\]
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Metode belajar & $O_i$ & $E_i$ & $\dfrac{(O_i-E_i)^2}{E_i}$ \\
+\midrule
+Membaca BMP & 18 & 20 & $4/20 = 0{,}20$ \\
+Menonton video pembelajaran & 12 & 20 & $64/20 = 3{,}20$ \\
+Mengerjakan latihan soal & 30 & 20 & $100/20 = 5{,}00$ \\
+\midrule
+\textbf{Total} & 60 & 60 & $\boldsymbol{\chisq = 8{,}40}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\soal{5. Derajat bebas}
+\[
+df = k - 1 = 3 - 1 = 2
+\]
+
+\soal{6. Perbandingan dengan nilai kritis}
+\[
+\chisq_{\text{tabel}}(\alpha = 0{,}05;\ df = 2) = 5{,}991
+\]
+\[
+\chisq_{\text{hitung}} = 8{,}40 > 5{,}991, \qquad p\text{-value} \approx 0{,}015 < 0{,}05
+\]
+
+\soal{7. Keputusan dan kesimpulan}
+\textbf{Tolak $H_0$.} Pada taraf signifikansi 5\%, pilihan metode belajar utama mahasiswa tidak tersebar merata. Mengerjakan latihan soal jauh lebih banyak dipilih (30 dari 60 mahasiswa), sedangkan menonton video pembelajaran paling sedikit dipilih (12 mahasiswa).
+
+\soal{8. Implikasi bagi tutor}
+\begin{itemize}
+  \item Mahasiswa cenderung menyukai latihan soal, sehingga tutor dapat memperbanyak latihan, kuis, dan pembahasan soal di tuton.
+  \item Latihan soal sebaiknya dikaitkan dengan BMP, misalnya dengan merujuk modul atau halaman tertentu, agar pemahaman konsep tetap terjaga.
+  \item Video pembelajaran kurang diminati. Tutor perlu mengevaluasi penyebabnya, misalnya durasi, kualitas, atau aksesibilitas. Video bisa dibuat lebih singkat atau langsung berisi pembahasan soal.
+\end{itemize}
+
+%=====================================================
+\section{Kasus 2: Uji Kesesuaian Distribusi Poisson}
+
+\soal{1. Alasan mempertimbangkan distribusi Poisson}
+Variabel yang diamati adalah banyaknya kejadian (jumlah tanggapan) dalam interval waktu tetap (satu minggu). Nilainya berupa bilangan cacah $0, 1, 2, \dots$. Kejadian diasumsikan terjadi secara acak dan saling bebas dengan laju rata-rata tertentu. Ini adalah ciri khas data yang berdistribusi Poisson.
+
+\soal{2. Hipotesis}
+\begin{itemize}
+  \item $H_0:$ jumlah tanggapan mahasiswa per minggu mengikuti distribusi Poisson.
+  \item $H_1:$ jumlah tanggapan mahasiswa per minggu tidak mengikuti distribusi Poisson.
+\end{itemize}
+
+\soal{3. Penduga $\lambda$}
+\[
+\hat\lambda = \bar x = \frac{\sum x f}{n}
+= \frac{0(8) + 1(18) + 2(24) + 3(17) + 4(8) + 5(4) + 6(1)}{80}
+= \frac{175}{80} = 2{,}1875
+\]
+
+\soal{4. Frekuensi harapan}
+\[
+P(X = x) = \frac{e^{-\lambda}\lambda^{x}}{x!}, \qquad E_x = n \cdot P(X = x), \qquad e^{-2{,}1875} \approx 0{,}1122
+\]
+\begin{center}
+\begin{tabular}{ccc}
+\toprule
+$x$ & $P(X = x)$ & $E_x = 80 \cdot P(X=x)$ \\
+\midrule
+0 & 0,1122 & 8,98 \\
+1 & 0,2454 & 19,63 \\
+2 & 0,2684 & 21,48 \\
+3 & 0,1957 & 15,66 \\
+4 & 0,1070 & 8,56 \\
+$\geq 5$ & $1 - 0{,}9288 = 0{,}0712$ & 5,69 \\
+\midrule
+\textbf{Total} & 1,0000 & 80,00 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\soal{5. Statistik uji khi-kuadrat}
+\begin{center}
+\begin{tabular}{cccc}
+\toprule
+$x$ & $O_x$ & $E_x$ & $\dfrac{(O_x-E_x)^2}{E_x}$ \\
+\midrule
+0 & 8 & 8,98 & 0,106 \\
+1 & 18 & 19,63 & 0,136 \\
+2 & 24 & 21,48 & 0,297 \\
+3 & 17 & 15,66 & 0,115 \\
+4 & 8 & 8,56 & 0,037 \\
+$\geq 5$ & 5 & 5,69 & 0,084 \\
+\midrule
+\textbf{Total} & 80 & 80 & $\boldsymbol{\chisq \approx 0{,}775}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\soal{6. Derajat bebas}
+\[
+df = k - 1 - m = 6 - 1 - 1 = 4
+\]
+dengan $k = 6$ kategori setelah penggabungan dan $m = 1$ parameter ($\lambda$) yang diestimasi dari data.
+
+\soal{7. Keputusan dan kesimpulan}
+\[
+\chisq_{\text{tabel}}(\alpha = 0{,}05;\ df = 4) = 9{,}488
+\]
+\[
+\chisq_{\text{hitung}} = 0{,}775 < 9{,}488, \qquad p\text{-value} \approx 0{,}94 > 0{,}05
+\]
+\textbf{Gagal tolak $H_0$.} Tidak ada bukti bahwa data menyimpang dari distribusi Poisson. Jumlah tanggapan mahasiswa per minggu dapat dianggap mengikuti distribusi Poisson dengan rata-rata sekitar 2,19 tanggapan per minggu.
+
+\soal{8. Manfaat bagi tutor}
+\begin{itemize}
+  \item Tutor dapat memprediksi peluang keaktifan, misalnya peluang mahasiswa tidak menanggapi sama sekali dalam seminggu $\approx 11\%$, atau peluang memberi minimal 3 tanggapan.
+  \item Tutor dapat menetapkan target partisipasi yang realistis, misalnya minimal 2 tanggapan per minggu.
+  \item Tutor dapat mendeteksi mahasiswa atau minggu yang tidak wajar, baik yang terlalu pasif maupun terlalu aktif dibanding pola Poisson.
+  \item Data ini juga dapat menjadi dasar untuk memantau apakah intervensi, seperti pertanyaan pemantik, benar-benar menaikkan rata-rata partisipasi.
+\end{itemize}
+
+%=====================================================
+\section{Pertanyaan Refleksi: Perbedaan dengan Analisis Regresi}
+
+\soal{1. Perbedaan tujuan}
+Uji kesesuaian bertujuan memeriksa apakah sebaran data observasi cocok dengan suatu distribusi atau proporsi teoretis. Regresi sederhana bertujuan memodelkan hubungan antara variabel $X$ dan $Y$ untuk menjelaskan dan memprediksi nilai $Y$ berdasarkan $X$.
+
+\soal{2. Apa yang dibandingkan dan dimodelkan}
+\begin{itemize}
+  \item Uji kesesuaian membandingkan frekuensi observasi ($O$) dengan frekuensi harapan ($E$) di bawah $H_0$ melalui statistik $\chisq$.
+  \item Regresi memodelkan nilai rata-rata $Y$ sebagai fungsi linear dari $X$, yaitu $Y = \beta_0 + \beta_1 X + \varepsilon$.
+\end{itemize}
+
+\soal{3. Mengapa tidak ada variabel $Y$ dan $X$}
+Uji kesesuaian hanya melibatkan satu variabel, yaitu variabel kategori atau cacahan beserta frekuensinya. Fokusnya pada bentuk distribusi variabel itu sendiri, bukan pada pengaruh satu variabel terhadap variabel lain. Karena itu, tidak ada variabel prediktor yang menjelaskan variabel respons.
+
+\end{document}
