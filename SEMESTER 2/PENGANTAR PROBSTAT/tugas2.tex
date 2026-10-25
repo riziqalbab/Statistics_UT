@@ -1,0 +1,74 @@
+\documentclass[12pt]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage[indonesian]{babel}
+
+\begin{document}
+
+\noindent Misalkan variabel random $X$ dan $Y$ mempunyai fungsi densitas bersama
+\[
+f(x,y) =
+\begin{cases}
+Cxy, & 0 < y < x < 1 \\
+0, & \text{lainnya}
+\end{cases}
+\]
+
+\section*{1. Nilai $C$}
+Agar $f(x,y)$ merupakan fungsi densitas bersama, haruslah
+\[
+\int_{0}^{1}\int_{0}^{x} Cxy \, dy \, dx = 1.
+\]
+Maka
+\begin{align*}
+\int_{0}^{1}\int_{0}^{x} Cxy \, dy \, dx
+&= C\int_{0}^{1} x \left[\frac{y^2}{2}\right]_{0}^{x} dx
+= C\int_{0}^{1} \frac{x^3}{2} \, dx \\
+&= \frac{C}{2}\left[\frac{x^4}{4}\right]_{0}^{1}
+= \frac{C}{8} = 1.
+\end{align*}
+Jadi,
+\[
+\boxed{C = 8}
+\]
+
+\section*{2. Densitas Marginal $f(x)$}
+\[
+f(x) = \int_{0}^{x} 8xy \, dy = 8x\left[\frac{y^2}{2}\right]_{0}^{x} = 4x^3
+\]
+sehingga
+\[
+f(x) =
+\begin{cases}
+4x^3, & 0 < x < 1 \\
+0, & \text{lainnya}
+\end{cases}
+\]
+
+\section*{3. Fungsi Densitas Bersyarat $f(y \mid x)$}
+\[
+f(y \mid x) = \frac{f(x,y)}{f(x)} = \frac{8xy}{4x^3} = \frac{2y}{x^2}
+\]
+sehingga untuk $0 < x < 1$,
+\[
+f(y \mid x) =
+\begin{cases}
+\dfrac{2y}{x^2}, & 0 < y < x \\[2mm]
+0, & \text{lainnya}
+\end{cases}
+\]
+
+\section*{4. Nilai Harapan Bersyarat $E\left(Y \mid X = \tfrac{1}{3}\right)$}
+\begin{align*}
+E(Y \mid X = x)
+&= \int_{0}^{x} y \cdot \frac{2y}{x^2} \, dy
+= \frac{2}{x^2}\left[\frac{y^3}{3}\right]_{0}^{x}
+= \frac{2}{x^2}\cdot\frac{x^3}{3}
+= \frac{2x}{3}.
+\end{align*}
+Untuk $x = \tfrac{1}{3}$:
+\[
+E\left(Y \mid X = \tfrac{1}{3}\right) = \frac{2}{3}\cdot\frac{1}{3} = \boxed{\frac{2}{9}}
+\]
+
+\end{document}

@@ -1,0 +1,206 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=2.5cm]{geometry}
+\usepackage{amsmath, amssymb}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\begin{document}
+
+\begin{center}
+{\Large\textbf{Jawaban Tugas Tutorial}}\\[4pt]
+RIZIQ LILI ULIL ALBAB \\
+058487469
+\end{center}
+
+%==================================================
+\section*{Soal 1}
+
+\subsection*{a. $\displaystyle\int_{\pi/6}^{\pi/4} x\sec^2 x\,dx$}
+
+Gunakan integral parsial $\displaystyle\int u\,dv = uv - \int v\,du$ dengan
+\[
+u = x \;\Rightarrow\; du = dx, \qquad dv = \sec^2 x\,dx \;\Rightarrow\; v = \tan x
+\]
+
+Integral tak tentunya:
+\begin{align*}
+\int x\sec^2 x\,dx &= x\tan x - \int \tan x\,dx \\
+&= x\tan x + \ln|\cos x| + C
+\end{align*}
+
+$x = \frac{\pi}{4}$:
+\[
+\frac{\pi}{4}\tan\frac{\pi}{4} + \ln\cos\frac{\pi}{4}
+= \frac{\pi}{4}(1) + \ln\frac{\sqrt2}{2}
+= \frac{\pi}{4} - \frac12\ln 2
+\]
+
+$x = \frac{\pi}{6}$:
+\[
+\frac{\pi}{6}\tan\frac{\pi}{6} + \ln\cos\frac{\pi}{6}
+= \frac{\pi}{6}\cdot\frac{1}{\sqrt3} + \ln\frac{\sqrt3}{2}
+= \frac{\sqrt3\,\pi}{18} + \frac12\ln 3 - \ln 2
+\]
+
+Kurangkan batas atas dengan batas bawah:
+\begin{align*}
+\int_{\pi/6}^{\pi/4} x\sec^2 x\,dx
+&= \left(\frac{\pi}{4} - \frac12\ln 2\right) - \left(\frac{\sqrt3\,\pi}{18} + \frac12\ln 3 - \ln 2\right) \\
+&= \frac{\pi}{4} - \frac{\sqrt3\,\pi}{18} + \frac12\ln 2 - \frac12\ln 3
+\end{align*}
+
+\[
+\int_{\pi/6}^{\pi/4} x\sec^2 x\,dx = \frac{\pi}{4} - \frac{\sqrt3\,\pi}{18} + \frac12\ln\frac23
+\]
+
+%--------------------------------------------------
+\subsection*{b. $\displaystyle\int \frac{x^2}{\sqrt{16-x^2}}\,dx$}
+
+Substitusi trigonometri karena terdapat bentuk $\sqrt{a^2 - x^2}$ dengan $a = 4$:
+\[
+x = 4\sin\theta \;\Rightarrow\; dx = 4\cos\theta\,d\theta, \qquad
+\sqrt{16 - x^2} = \sqrt{16 - 16\sin^2\theta} = 4\cos\theta
+\]
+
+Substitusi ke integral:
+\begin{align*}
+\int \frac{x^2}{\sqrt{16-x^2}}\,dx
+&= \int \frac{16\sin^2\theta}{4\cos\theta}\cdot 4\cos\theta\,d\theta \\
+&= 16\int \sin^2\theta\,d\theta \\
+&= 16\int \frac{1 - \cos 2\theta}{2}\,d\theta \\
+&= 8\theta - 4\sin 2\theta + C \\
+&= 8\theta - 8\sin\theta\cos\theta + C
+\end{align*}
+
+Kembalikan ke variabel $x$:
+\[
+\sin\theta = \frac{x}{4}, \qquad
+\cos\theta = \frac{\sqrt{16-x^2}}{4}, \qquad
+\theta = \arcsin\frac{x}{4}
+\]
+
+\[
+8\arcsin\frac{x}{4} - 8\cdot\frac{x}{4}\cdot\frac{\sqrt{16-x^2}}{4} + C
+\]
+
+\[
+\int \frac{x^2}{\sqrt{16-x^2}}\,dx = 8\arcsin\frac{x}{4} - \frac{x\sqrt{16-x^2}}{2} + C
+\]
+
+%--------------------------------------------------
+\subsection*{c. $\displaystyle\int \frac{2x^2 - x - 20}{x^2 + x - 6}\,dx$}
+
+\textbf{Langkah 1: Pembagian polinomial.}
+Derajat pembilang sama dengan derajat penyebut, sehingga dibagi terlebih dahulu.
+Hasil bagi: $\dfrac{2x^2}{x^2} = 2$, lalu
+\[
+2(x^2 + x - 6) = 2x^2 + 2x - 12
+\]
+Sisa pembagian:
+\[
+(2x^2 - x - 20) - (2x^2 + 2x - 12) = -3x - 8
+\]
+Sehingga
+\[
+\frac{2x^2 - x - 20}{x^2 + x - 6} = 2 + \frac{-3x - 8}{x^2 + x - 6}
+\]
+
+\textbf{Langkah 2: Faktorkan penyebut.}
+\[
+x^2 + x - 6 = (x + 3)(x - 2)
+\]
+
+\textbf{Langkah 3: Pecahan parsial.}
+\[
+\frac{-3x - 8}{(x + 3)(x - 2)} = \frac{A}{x + 3} + \frac{B}{x - 2}
+\quad\Longrightarrow\quad
+-3x - 8 = A(x - 2) + B(x + 3)
+\]
+
+Untuk $x = 2$:
+\[
+-3(2) - 8 = A(0) + B(5) \;\Rightarrow\; -14 = 5B \;\Rightarrow\; B = -\frac{14}{5}
+\]
+
+Untuk $x = -3$:
+\[
+-3(-3) - 8 = A(-5) + B(0) \;\Rightarrow\; 1 = -5A \;\Rightarrow\; A = -\frac{1}{5}
+\]
+
+\textbf{Langkah 4: Integralkan.}
+\begin{align*}
+\int \frac{2x^2 - x - 20}{x^2 + x - 6}\,dx
+&= \int \left( 2 - \frac{1}{5}\cdot\frac{1}{x + 3} - \frac{14}{5}\cdot\frac{1}{x - 2} \right) dx \\
+&= 2x - \frac{1}{5}\ln|x + 3| - \frac{14}{5}\ln|x - 2| + C
+\end{align*}
+
+\[
+\int \frac{2x^2 - x - 20}{x^2 + x - 6}\,dx = 2x - \frac{1}{5}\ln|x + 3| - \frac{14}{5}\ln|x - 2| + C
+\]
+
+%==================================================
+\section*{Soal 2}
+
+Tentukan luas daerah yang dibatasi oleh $y = -x + 6$ dan $y = \sqrt{x}$.
+
+\textbf{Titik potong kedua kurva:}
+\begin{align*}
+\sqrt{x} &= 6 - x \\
+x &= 36 - 12x + x^2 \\
+x^2 - 13x + 36 &= 0 \\
+(x - 4)(x - 9) &= 0
+\end{align*}
+
+Untuk $x = 9$: $\sqrt9 = 3$ sedangkan $6 - 9 = -3$, sehingga tidak memenuhi.
+Untuk $x = 4$: $\sqrt4 = 2$ dan $6 - 4 = 2$, sehingga memenuhi.
+Jadi titik potongnya adalah $(4, 2)$.
+
+Daerah yang tertutup berada di kuadran I, dibatasi oleh kedua kurva dan sumbu-$x$.
+Integralkan terhadap $y$ dengan
+\[
+y = \sqrt{x} \;\Rightarrow\; x = y^2 \;\text{(batas kiri)}, \qquad
+y = 6 - x \;\Rightarrow\; x = 6 - y \;\text{(batas kanan)}, \qquad 0 \le y \le 2
+\]
+
+\begin{align*}
+L &= \int_0^2 \left[(6 - y) - y^2\right] dy \\
+&= \left[6y - \frac{y^2}{2} - \frac{y^3}{3}\right]_0^2 \\
+&= 12 - 2 - \frac{8}{3} \\
+&= \frac{22}{3}
+\end{align*}
+
+\[
+L = \frac{22}{3} \text{ satuan luas}
+\]
+
+%==================================================
+\section*{Soal 3}
+
+Hitung volume benda apabila daerah yang dibatasi oleh $y = 16 - 2x$, $y = 6$, dan $x = 0$ diputar terhadap sumbu-$x$.
+
+\textbf{Titik potong:}
+\[
+16 - 2x = 6 \;\Rightarrow\; x = 5
+\]
+Daerah berada pada $0 \le x \le 5$, dengan $y = 16 - 2x$ di atas dan $y = 6$ di bawah.
+
+\[
+R(x) = 16 - 2x \;\text{(jari-jari luar)}, \qquad r(x) = 6 \;\text{(jari-jari dalam)}
+\]
+
+\begin{align*}
+V &= \pi\int_0^5 \left[R(x)^2 - r(x)^2\right] dx \\
+&= \pi\int_0^5 \left[(16 - 2x)^2 - 6^2\right] dx \\
+&= \pi\int_0^5 \left(256 - 64x + 4x^2 - 36\right) dx \\
+&= \pi\int_0^5 \left(4x^2 - 64x + 220\right) dx \\
+&= \pi\left[\frac{4x^3}{3} - 32x^2 + 220x\right]_0^5 \\
+&= \pi\left(\frac{500}{3} - 800 + 1100\right) \\
+&= \pi\left(\frac{500}{3} + \frac{900}{3}\right) \\
+&= \frac{1400\pi}{3}
+\end{align*}
+
+\[
+V = \frac{1400\pi}{3}
+\]
+
+\end{document}

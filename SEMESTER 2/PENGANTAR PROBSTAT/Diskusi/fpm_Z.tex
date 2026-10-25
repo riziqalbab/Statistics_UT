@@ -1,0 +1,76 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage[margin=2.5cm]{geometry}
+
+\begin{document}
+
+
+
+\textbf{Ya}, $Z = X + Y$ mempunyai fpm. Karena $Z$ hanya mengambil nilai berhingga, yaitu $0$, $1$, dan $2$, maka
+\[
+M_Z(t) = E\!\left[e^{tZ}\right]
+\]
+merupakan jumlahan berhingga sehingga selalu ada untuk setiap $t \in \mathbb{R}$.
+
+\subsection*{Langkah 1: Distribusi $Z$}
+\begin{center}
+\begin{tabular}{ccc}
+\toprule
+$(x,y)$ & $z = x+y$ & $p(x,y)$ \\
+\midrule
+$(0,0)$ & 0 & 0{,}4 \\
+$(0,1)$ & 1 & 0{,}1 \\
+$(1,0)$ & 1 & 0{,}2 \\
+$(1,1)$ & 2 & 0{,}3 \\
+\bottomrule
+\end{tabular}
+\end{center}
+Sehingga
+\begin{align*}
+P(Z=0) &= 0{,}4, \\
+P(Z=1) &= 0{,}1 + 0{,}2 = 0{,}3, \\
+P(Z=2) &= 0{,}3,
+\end{align*}
+dengan $0{,}4 + 0{,}3 + 0{,}3 = 1$.
+
+\subsection*{Langkah 2: Menghitung fpm}
+\begin{align*}
+M_Z(t) &= E\!\left[e^{tZ}\right] = \sum_{z} e^{tz}\, P(Z=z) \\
+&= e^{0}(0{,}4) + e^{t}(0{,}3) + e^{2t}(0{,}3),
+\end{align*}
+sehingga
+\[
+\boxed{M_Z(t) = 0{,}4 + 0{,}3\,e^{t} + 0{,}3\,e^{2t}, \qquad t \in \mathbb{R}.}
+\]
+Secara setara, fpm dapat dihitung langsung dari distribusi bersama:
+\[
+M_Z(t) = E\!\left[e^{t(X+Y)}\right] = \sum_{x}\sum_{y} e^{t(x+y)}\, p(x,y),
+\]
+dan hasilnya sama.
+
+\subsection*{Catatan: $X$ dan $Y$ tidak independen}
+Rumus $M_{X+Y}(t) = M_X(t)\,M_Y(t)$ hanya berlaku jika $X$ dan $Y$ independen. Di sini
+\[
+P(X=0) = 0{,}5, \qquad P(Y=0) = 0{,}6,
+\]
+sehingga
+\[
+P(X=0)\,P(Y=0) = 0{,}30 \neq 0{,}4 = P(X=0,\,Y=0).
+\]
+Jadi $X$ dan $Y$ tidak independen. Jika rumus perkalian tetap dipakai, diperoleh
+\[
+(0{,}5 + 0{,}5e^{t})(0{,}6 + 0{,}4e^{t}) = 0{,}3 + 0{,}5e^{t} + 0{,}2e^{2t},
+\]
+yang berbeda dari fpm yang benar.
+
+\subsection*{Pengecekan}
+\[
+M_Z'(t) = 0{,}3e^{t} + 0{,}6e^{2t}
+\quad\Longrightarrow\quad
+M_Z'(0) = 0{,}3 + 0{,}6 = 0{,}9.
+\]
+Hasil ini sama dengan $E[X] + E[Y] = 0{,}5 + 0{,}4 = 0{,}9$, sehingga fpm yang diperoleh konsisten.
+
+\end{document}

@@ -1,0 +1,139 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+% ======================== SOAL 1 ========================
+\textbf{1.} $\displaystyle \int \left(12x^2 - 4x + 1\right) dx = \ldots$
+
+\medskip
+\textbf{Jawab:}
+
+Pakai aturan pangkat: $\displaystyle \int x^n \, dx = \frac{x^{n+1}}{n+1} + C$
+
+\begin{align*}
+  \int 12x^2 \, dx &= 12 \cdot \frac{x^{3}}{3} = 4x^3 \\[6pt]
+  \int -4x \, dx   &= -4 \cdot \frac{x^{2}}{2} = -2x^2 \\[6pt]
+  \int 1 \, dx     &= x
+\end{align*}
+
+\begin{align*}
+  \int \left(12x^2 - 4x + 1\right) dx &= 4x^3 - 2x^2 + x + C
+\end{align*}
+
+Cek (turunkan balik):
+\begin{align*}
+  \frac{d}{dx}\left(4x^3 - 2x^2 + x + C\right) &= 12x^2 - 4x + 1 \quad \checkmark
+\end{align*}
+
+\boxed{4x^3 - 2x^2 + x + C}
+
+\bigskip\hrule\bigskip
+
+% ======================== SOAL 2 ========================
+\textbf{2.} $\displaystyle \lim_{x \to 0} \frac{e^x - 1 - x}{x^2} = \ldots$
+
+\medskip
+\textbf{Jawab:}
+
+Substitusi $x = 0$:
+\begin{align*}
+  \frac{e^0 - 1 - 0}{0^2} &= \frac{0}{0} \quad \text{(tak tentu} \rightarrow \text{L'H\^opital)}
+\end{align*}
+
+\begin{align*}
+  \lim_{x \to 0} \frac{e^x - 1 - x}{x^2}
+    &= \lim_{x \to 0} \frac{e^x - 1}{2x}
+       && \text{(masih } \tfrac{0}{0} \text{, L'H\^opital lagi)} \\[6pt]
+    &= \lim_{x \to 0} \frac{e^x}{2} \\[6pt]
+    &= \frac{e^0}{2} \\[6pt]
+    &= \frac{1}{2}
+\end{align*}
+
+\boxed{\dfrac{1}{2}}
+
+\bigskip\hrule\bigskip
+
+% ======================== SOAL 3 ========================
+\textbf{3.} $\displaystyle \lim_{x \to 0^+} x^x = \ldots$
+
+\medskip
+\textbf{Jawab:}
+
+Bentuknya $0^0$ (tak tentu).
+
+Misal $y = x^x$, maka
+\begin{align*}
+  \ln y &= \ln x^x = x \ln x \quad \text{(bentuk } 0 \cdot (-\infty)\text{)}
+\end{align*}
+
+Ubah jadi pecahan:
+\begin{align*}
+  \lim_{x \to 0^+} \ln y
+    &= \lim_{x \to 0^+} \frac{\ln x}{\frac{1}{x}}
+       && \text{(bentuk } \tfrac{-\infty}{\infty} \rightarrow \text{L'H\^opital)} \\[6pt]
+    &= \lim_{x \to 0^+} \frac{\frac{1}{x}}{-\frac{1}{x^2}} \\[6pt]
+    &= \lim_{x \to 0^+} \frac{1}{x} \cdot \left(-x^2\right) \\[6pt]
+    &= \lim_{x \to 0^+} (-x) \\[6pt]
+    &= 0
+\end{align*}
+
+Karena $\ln y \to 0$:
+\begin{align*}
+  y &\to e^0 = 1
+\end{align*}
+
+\boxed{1}
+
+\bigskip\hrule\bigskip
+
+% ======================== SOAL 4 ========================
+\textbf{4.} Tentukan konvergen/divergen: $\displaystyle \int_1^{\infty} \frac{\ln x}{x^2}\, dx$
+
+\medskip
+\textbf{Jawab:}
+
+Batas atas $\infty$ $\rightarrow$ integral tak wajar, ubah ke limit:
+\begin{align*}
+  \int_1^{\infty} \frac{\ln x}{x^2}\, dx &= \lim_{b \to \infty} \int_1^{b} \frac{\ln x}{x^2}\, dx
+\end{align*}
+
+Integral parsial $\displaystyle \int u \, dv = uv - \int v \, du$
+
+\begin{align*}
+  u  &= \ln x    & dv &= x^{-2}\, dx \\
+  du &= \frac{1}{x}\, dx & v &= -\frac{1}{x}
+\end{align*}
+
+\begin{align*}
+  \int \frac{\ln x}{x^2}\, dx
+    &= \ln x \cdot \left(-\frac{1}{x}\right) - \int \left(-\frac{1}{x}\right)\frac{1}{x}\, dx \\[6pt]
+    &= -\frac{\ln x}{x} + \int \frac{1}{x^2}\, dx \\[6pt]
+    &= -\frac{\ln x}{x} - \frac{1}{x}
+\end{align*}
+
+Masukkan batas:
+\begin{align*}
+  \int_1^{b} \frac{\ln x}{x^2}\, dx
+    &= \left[-\frac{\ln x}{x} - \frac{1}{x}\right]_1^b \\[6pt]
+    &= \left(-\frac{\ln b}{b} - \frac{1}{b}\right) - \left(-\frac{\ln 1}{1} - 1\right) \\[6pt]
+    &= -\frac{\ln b}{b} - \frac{1}{b} + 1 \qquad (\ln 1 = 0)
+\end{align*}
+
+Cari limitnya, $\dfrac{\ln b}{b}$ bentuk $\dfrac{\infty}{\infty}$ $\rightarrow$ L'H\^opital:
+\begin{align*}
+  \lim_{b \to \infty} \frac{\ln b}{b} &= \lim_{b \to \infty} \frac{\frac{1}{b}}{1} = 0
+\end{align*}
+
+\begin{align*}
+  \lim_{b \to \infty} \left(-\frac{\ln b}{b} - \frac{1}{b} + 1\right) &= -0 - 0 + 1 \\
+  &= 1
+\end{align*}
+
+Limitnya ada (hingga), jadi integralnya \textbf{konvergen}.
+
+\boxed{\displaystyle \int_1^{\infty} \frac{\ln x}{x^2}\, dx = 1 \;\text{(konvergen)}}
+
+\end{document}
