@@ -1,0 +1,196 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\begin{document}
+
+\begin{center}
+\textbf{JAWABAN TUGAS TUTORIAL KE-3}\\
+\end{center}
+
+\vspace{2mm}
+Nama : RIZIQ LILI ULIL ALBAB \\
+NIM \hspace{2.5mm}: 058487469 \\
+PRODI : S1 STATISTIKA \\
+
+\vspace{10mm}
+
+%=====================================================
+\textbf{1. Tentukan hasil integral berikut.}
+
+\textbf{a.} $\displaystyle \int_{e}^{\infty} \frac{1}{x\ln x}\,dx$
+
+\textit{Jawab:}
+
+Kita akan menggunakan integral tak wajar:
+\[
+\int_{e}^{\infty} \frac{1}{x\ln x}\,dx = \lim_{b\to\infty} \int_{e}^{b} \frac{1}{x\ln x}\,dx
+\]
+
+Misal $u = \ln x$, maka $du = \dfrac{1}{x}\,dx$.
+\[
+\int \frac{1}{x\ln x}\,dx = \int \frac{1}{u}\,du = \ln|u| + C = \ln|\ln x| + C
+\]
+
+Sehingga
+\begin{align*}
+\int_{e}^{\infty} \frac{1}{x\ln x}\,dx
+&= \lim_{b\to\infty} \Big[\ln(\ln x)\Big]_{e}^{b} \\
+&= \lim_{b\to\infty} \big(\ln(\ln b) - \ln(\ln e)\big) \\
+&= \lim_{b\to\infty} \big(\ln(\ln b) - \ln 1\big) \\
+&= \lim_{b\to\infty} \ln(\ln b) - 0 \\
+&= \infty
+\end{align*}
+
+Integral $\displaystyle \int_{e}^{\infty} \frac{1}{x\ln x}\,dx$ \textbf{divergen}.
+
+\vspace{4mm}
+%-----------------------------------------------------
+\textbf{b.} $\displaystyle \int_{-\infty}^{\infty} \frac{1}{x^2+16}\,dx$
+
+\textit{Jawab:}
+
+Integral dipecah di $x = 0$:
+\[
+\int_{-\infty}^{\infty} \frac{1}{x^2+16}\,dx
+= \int_{-\infty}^{0} \frac{1}{x^2+16}\,dx + \int_{0}^{\infty} \frac{1}{x^2+16}\,dx
+\]
+
+Gunakan rumus $\displaystyle \int \frac{1}{x^2+a^2}\,dx = \frac{1}{a}\arctan\frac{x}{a} + C$ dengan $a = 4$:
+\[
+\int \frac{1}{x^2+16}\,dx = \frac{1}{4}\arctan\frac{x}{4} + C
+\]
+
+Bagian kanan:
+\begin{align*}
+\int_{0}^{\infty} \frac{1}{x^2+16}\,dx
+&= \lim_{b\to\infty} \left[\frac{1}{4}\arctan\frac{x}{4}\right]_{0}^{b} \\
+&= \lim_{b\to\infty} \left(\frac{1}{4}\arctan\frac{b}{4} - \frac{1}{4}\arctan 0\right) \\
+&= \frac{1}{4}\cdot\frac{\pi}{2} - 0 = \frac{\pi}{8}
+\end{align*}
+
+Bagian kiri:
+\begin{align*}
+\int_{-\infty}^{0} \frac{1}{x^2+16}\,dx
+&= \lim_{a\to-\infty} \left[\frac{1}{4}\arctan\frac{x}{4}\right]_{a}^{0} \\
+&= \lim_{a\to-\infty} \left(\frac{1}{4}\arctan 0 - \frac{1}{4}\arctan\frac{a}{4}\right) \\
+&= 0 - \frac{1}{4}\left(-\frac{\pi}{2}\right) = \frac{\pi}{8}
+\end{align*}
+
+Jadi
+\[
+\int_{-\infty}^{\infty} \frac{1}{x^2+16}\,dx = \frac{\pi}{8} + \frac{\pi}{8} = \frac{\pi}{4}
+\]
+
+Integral \textbf{konvergen} dengan nilai $\dfrac{\pi}{4}$.
+
+\vspace{6mm}
+%=====================================================
+\textbf{2. Tentukan kekonvergenan barisan berikut.}
+
+\textbf{a.} $\displaystyle a_n = \frac{n^3+3n^2+3n}{(n+1)^3}$
+
+\textit{Jawab:}
+
+Karena $(n+1)^3 = n^3+3n^2+3n+1$, sehingga
+\[
+n^3+3n^2+3n = (n+1)^3 - 1
+\]
+
+Maka
+\[
+a_n = \frac{(n+1)^3 - 1}{(n+1)^3} = 1 - \frac{1}{(n+1)^3}
+\]
+
+Sehingga
+\[
+\lim_{n\to\infty} a_n = \lim_{n\to\infty}\left(1 - \frac{1}{(n+1)^3}\right) = 1 - 0 = 1
+\]
+
+Barisan $\{a_n\}$ \textbf{konvergen} ke 1.
+
+\vspace{4mm}
+%-----------------------------------------------------
+\textbf{b.} $\displaystyle b_n = \left(1+\frac{2}{n}\right)^{n/2}$
+
+\textit{Jawab:}
+
+$1^\infty$ (bentuk tak tentu). Misalkan
+\[
+y = \left(1+\frac{2}{x}\right)^{x/2}, \quad x > 0
+\]
+
+Ambil logaritma natural kedua ruas:
+\[
+\ln y = \frac{x}{2}\ln\left(1+\frac{2}{x}\right) = \frac{\ln\left(1+\frac{2}{x}\right)}{\frac{2}{x}}
+\]
+
+$x\to\infty$ bentuknya $\dfrac{0}{0}$. Misalkan $t = \dfrac{2}{x}$, maka $x\to\infty \Rightarrow t\to 0^{+}$:
+\[
+\lim_{x\to\infty} \ln y = \lim_{t\to 0^{+}} \frac{\ln(1+t)}{t}
+\]
+
+Pakai aturan L'H\^opital:
+\[
+\lim_{t\to 0^{+}} \frac{\ln(1+t)}{t} = \lim_{t\to 0^{+}} \frac{\frac{1}{1+t}}{1} = \frac{1}{1+0} = 1
+\]
+
+Karena $\ln y \to 1$, maka $y \to e^{1} = e$. Jadi
+\[
+\lim_{n\to\infty} b_n = \lim_{n\to\infty}\left(1+\frac{2}{n}\right)^{n/2} = e
+\]
+
+Barisan $\{b_n\}$ \textbf{konvergen} ke $e$.
+
+\vspace{6mm}
+%=====================================================
+\textbf{3. Tentukan kekonvergenan deret berikut.}
+
+\textbf{a.} $\displaystyle \sum_{k=1}^{\infty} \frac{4^{k+1}}{7^{k-1}}$
+
+\textit{Jawab:}
+
+Ubah suku ke-$k$ ke bentuk deret geometri:
+\[
+\frac{4^{k+1}}{7^{k-1}} = \frac{4^{2}\cdot 4^{k-1}}{7^{k-1}} = 16\left(\frac{4}{7}\right)^{k-1}
+\]
+
+Sehingga
+\[
+\sum_{k=1}^{\infty} \frac{4^{k+1}}{7^{k-1}} = \sum_{k=1}^{\infty} 16\left(\frac{4}{7}\right)^{k-1}
+\]
+
+Deret geometri dengan suku pertama $a = 16$ dan rasio $r = \dfrac{4}{7}$.
+
+Karena $|r| = \dfrac{4}{7} < 1$, deret konvergen dengan jumlah
+\[
+S = \frac{a}{1-r} = \frac{16}{1-\frac{4}{7}} = \frac{16}{\frac{3}{7}} = \frac{112}{3}
+\]
+
+Deret \textbf{konvergen} dengan jumlah $\dfrac{112}{3}$.
+
+\vspace{4mm}
+%-----------------------------------------------------
+\textbf{b.} $\displaystyle \sum_{k=2}^{\infty} \left(\frac{3}{(k-1)^2} - \frac{3}{k^2}\right)$
+
+\textit{Jawab:}
+
+Deret ini adalah deret kolaps (\textit{telescoping}). Jumlah parsial ke-$n$:
+\begin{align*}
+S_n &= \sum_{k=2}^{n} \left(\frac{3}{(k-1)^2} - \frac{3}{k^2}\right) \\
+&= \left(\frac{3}{1^2} - \frac{3}{2^2}\right) + \left(\frac{3}{2^2} - \frac{3}{3^2}\right) + \left(\frac{3}{3^2} - \frac{3}{4^2}\right) + \cdots + \left(\frac{3}{(n-1)^2} - \frac{3}{n^2}\right) \\
+&= \frac{3}{1^2} - \frac{3}{n^2} \\
+&= 3 - \frac{3}{n^2}
+\end{align*}
+
+Maka
+\[
+\sum_{k=2}^{\infty} \left(\frac{3}{(k-1)^2} - \frac{3}{k^2}\right) = \lim_{n\to\infty} S_n = \lim_{n\to\infty}\left(3 - \frac{3}{n^2}\right) = 3 - 0 = 3
+\]
+
+Deret \textbf{konvergen} dengan jumlah 3.
+
+\end{document}
