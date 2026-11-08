@@ -1,0 +1,87 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage[indonesian]{babel}
+\usepackage{enumitem}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\setlist{leftmargin=*, itemsep=6pt}
+
+\begin{document}
+
+\section*{1. Perbedaan Deret Taylor dan Deret Maclaurin}
+
+Deret Taylor fungsi $f(x)$ di sekitar titik $x=a$:
+\[
+  f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!}\,(x-a)^n .
+\]
+Deret Maclaurin adalah deret Taylor dengan $a=0$:
+\[
+  f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(0)}{n!}\,x^n .
+\]
+Jadi perbedaannya hanya pada titik pusat ekspansi. Contoh deret Maclaurin:
+\[
+  e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots
+\]
+Contoh deret Taylor di $a=1$ (karena $\ln x$ tidak terdefinisi di $x=0$):
+\[
+  \ln x = (x-1) - \frac{(x-1)^2}{2} + \frac{(x-1)^3}{3} - \cdots
+\]
+
+\section*{2. Syarat Kekonvergenan Deret}
+
+Deret $\sum a_n$ konvergen jika jumlah parsialnya
+\[
+  S_n = a_1 + a_2 + \cdots + a_n
+\]
+menuju bilangan berhingga $S$ saat $n \to \infty$.
+
+Deret konvergen hanya jika
+\[
+  \lim_{n\to\infty} a_n = 0 .
+\]
+Selain syarat di atas, ada cukup banyak uji yang dapat digunakan untuk
+menentukan kekonvergenan suatu deret. Contohnya deret harmonik
+$\sum_{n=1}^{\infty} \frac{1}{n}$: sukunya menuju $0$, tetapi deretnya divergen.
+
+\subsection*{Uji yang umum dipakai}
+
+\begin{itemize}
+  \item Deret geometri $\sum a r^n$ konvergen jika $|r| < 1$, dengan jumlah
+  $\frac{a}{1-r}$.
+
+  Contoh:
+  \[
+    \sum_{n=0}^{\infty} \left(\frac{1}{2}\right)^{n} = 2 .
+  \]
+
+  \item Deret-$p$ $\sum \frac{1}{n^p}$ konvergen jika $p > 1$.
+
+  Contoh:
+  \[
+    \sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6} .
+  \]
+
+  \item Uji rasio: jika
+  \[
+    L = \lim_{n\to\infty} \left| \frac{a_{n+1}}{a_n} \right| < 1,
+  \]
+  deret konvergen.
+
+  Contoh: untuk $\sum \frac{1}{n!}$,
+  \[
+    L = \lim_{n\to\infty} \frac{1}{n+1} = 0 < 1,
+  \]
+  jadi konvergen.
+
+  \item Deret berganti tanda (Leibniz): $\sum (-1)^{n+1} b_n$ konvergen jika
+  $b_n$ turun dan $\lim b_n = 0$.
+
+  Contoh:
+  \[
+    1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \cdots = \ln 2 .
+  \]
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,146 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{icomma} % koma sebagai pemisah desimal, mis. 0,4
+\usepackage{enumitem}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries Tugas 3}\\[2pt]
+  {\large Pengantar Probabilitas (STIK4122)}
+\end{center}
+
+\begin{tabular}{@{}l@{\;:\;}l}
+  Nama  & RIZIQ LILI ULIL ALBAB \\
+  NIM   & 058487469 \\
+  Prodi & S1 STATISTIKA
+\end{tabular}
+
+\section*{Diketahui}
+
+Matriks transisi dengan urutan kondisi Tinggi (T), Sedang (S), dan Rendah (R):
+\[
+P =
+\begin{array}{c@{\;}c}
+  & \begin{array}{ccc} \text{T} & \text{S} & \text{R} \end{array} \\
+  \begin{array}{c} \text{T} \\ \text{S} \\ \text{R} \end{array} &
+  \begin{pmatrix}
+    0,4 & 0,3 & 0,3 \\
+    0,2 & 0,6 & 0,2 \\
+    0   & 0,5 & 0,5
+  \end{pmatrix}
+\end{array}
+\]
+
+Distribusi awal:
+\[
+\pi_0 = \begin{pmatrix} 0,4 & 0,3 & 0,3 \end{pmatrix}
+\]
+\textit{Catatan: digunakan $\pi_0 = (0,4 \;\; 0,3 \;\; 0,3)$ sesuai vektor yang tertulis pada soal.}
+
+\section*{1. Distribusi kondisi penjualan pada hari berikutnya}
+
+Rumus: $\pi_1 = \pi_0 P$
+\begin{align*}
+\pi_1(T) &= (0,4)(0,4) + (0,3)(0,2) + (0,3)(0) = 0,16 + 0,06 + 0 = 0,22 \\
+\pi_1(S) &= (0,4)(0,3) + (0,3)(0,6) + (0,3)(0,5) = 0,12 + 0,18 + 0,15 = 0,45 \\
+\pi_1(R) &= (0,4)(0,3) + (0,3)(0,2) + (0,3)(0,5) = 0,12 + 0,06 + 0,15 = 0,33
+\end{align*}
+Jadi,
+\[
+\boxed{\pi_1 = \begin{pmatrix} 0,22 & 0,45 & 0,33 \end{pmatrix}}
+\qquad \text{(cek: } 0,22 + 0,45 + 0,33 = 1\text{)}
+\]
+
+\section*{2. Distribusi kondisi penjualan setelah dua hari}
+
+Rumus: $\pi_2 = \pi_1 P = \pi_0 P^2$
+\begin{align*}
+\pi_2(T) &= (0,22)(0,4) + (0,45)(0,2) + (0,33)(0) = 0,088 + 0,090 + 0 = 0,178 \\
+\pi_2(S) &= (0,22)(0,3) + (0,45)(0,6) + (0,33)(0,5) = 0,066 + 0,270 + 0,165 = 0,501 \\
+\pi_2(R) &= (0,22)(0,3) + (0,45)(0,2) + (0,33)(0,5) = 0,066 + 0,090 + 0,165 = 0,321
+\end{align*}
+Sebagai pembanding, matriks transisi dua langkah adalah
+\[
+P^2 =
+\begin{pmatrix}
+  0,22 & 0,45 & 0,33 \\
+  0,20 & 0,52 & 0,28 \\
+  0,10 & 0,55 & 0,35
+\end{pmatrix},
+\]
+dan $\pi_0 P^2$ memberikan hasil yang sama. Jadi,
+\[
+\boxed{\pi_2 = \begin{pmatrix} 0,178 & 0,501 & 0,321 \end{pmatrix}}
+\qquad \text{(cek: } 0,178 + 0,501 + 0,321 = 1\text{)}
+\]
+
+\section*{3. Peluang berada pada kondisi Sedang setelah dua hari}
+
+\[
+P(X_2 = S) = \pi_2(S) = \boxed{0,501}
+\]
+Jadi, peluang perusahaan berada pada kondisi penjualan sedang setelah dua hari adalah $0,501$ atau sekitar $50,1\%$.
+
+\section*{4. Distribusi stasioner}
+
+Misalkan $\pi = (\pi_T \;\; \pi_S \;\; \pi_R)$ dengan syarat
+\[
+\pi = \pi P \qquad \text{dan} \qquad \pi_T + \pi_S + \pi_R = 1.
+\]
+
+Dari kolom T:
+\begin{align*}
+\pi_T &= 0,4\pi_T + 0,2\pi_S + 0\cdot\pi_R \\
+0,6\pi_T &= 0,2\pi_S \\
+\pi_S &= 3\pi_T \tag{i}
+\end{align*}
+
+Dari kolom S:
+\begin{align*}
+\pi_S &= 0,3\pi_T + 0,6\pi_S + 0,5\pi_R \\
+0,4\pi_S &= 0,3\pi_T + 0,5\pi_R \\
+0,4(3\pi_T) &= 0,3\pi_T + 0,5\pi_R \\
+0,9\pi_T &= 0,5\pi_R \\
+\pi_R &= 1,8\pi_T \tag{ii}
+\end{align*}
+
+Syarat jumlah sama dengan 1:
+\begin{align*}
+\pi_T + 3\pi_T + 1,8\pi_T &= 1 \\
+5,8\pi_T &= 1 \\
+\pi_T &= \frac{1}{5,8} = \frac{5}{29} \approx 0,172
+\end{align*}
+Sehingga
+\[
+\pi_S = 3 \cdot \frac{5}{29} = \frac{15}{29} \approx 0,517,
+\qquad
+\pi_R = 1,8 \cdot \frac{5}{29} = \frac{9}{29} \approx 0,310.
+\]
+
+Cek dengan kolom R:
+\[
+0,3\left(\tfrac{5}{29}\right) + 0,2\left(\tfrac{15}{29}\right) + 0,5\left(\tfrac{9}{29}\right)
+= \frac{1,5 + 3 + 4,5}{29} = \frac{9}{29} = \pi_R \quad \checkmark
+\]
+
+Jadi, distribusi stasionernya adalah
+\[
+\boxed{\pi = \begin{pmatrix} \dfrac{5}{29} & \dfrac{15}{29} & \dfrac{9}{29} \end{pmatrix}
+\approx \begin{pmatrix} 0,172 & 0,517 & 0,310 \end{pmatrix}}
+\]
+
+\subsection*{Ulasan}
+\begin{enumerate}[label=\alph*.]
+  \item Dalam jangka panjang, penjualan berada pada kondisi Sedang sekitar $51,7\%$, Rendah sekitar $31,0\%$, dan Tinggi sekitar $17,2\%$ dari seluruh hari.
+  \item Distribusi ini tidak bergantung pada kondisi awal, karena rantai Markov ini \emph{irreducible} (semua kondisi dapat saling dicapai) dan \emph{aperiodik}. Hal ini terlihat dari $\pi_2 = (0,178 \;\; 0,501 \;\; 0,321)$ yang sudah mendekati $\pi$.
+  \item Kondisi Sedang paling dominan karena peluang bertahannya paling besar, yaitu $0,6$.
+  \item Dari kondisi Rendah tidak dapat langsung berpindah ke kondisi Tinggi (peluangnya $0$), sehingga pemulihan penjualan harus melalui kondisi Sedang.
+  \item Perusahaan perlu strategi untuk mempertahankan kondisi Tinggi (peluang bertahan hanya $0,4$) dan mempercepat pemulihan dari kondisi Rendah.
+\end{enumerate}
+
+\end{document}
